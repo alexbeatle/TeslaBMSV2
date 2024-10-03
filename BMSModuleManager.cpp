@@ -321,6 +321,8 @@ void BMSModuleManager::getAllVoltTemp()
   packVolt = 0.0f;
   //lowTemp = 999.0f;
   //highTemp = -999.0f;
+  lowestPackTemp = 200.0f;
+  highestPackTemp = -100.0f;
   for (int x = 1; x <= MAX_MODULE_ADDR; x++)
   {
     if (modules[x].isExisting())
@@ -329,17 +331,17 @@ void BMSModuleManager::getAllVoltTemp()
     }
   }
 
-  if (numFoundModules < 8)
-  {
+  // if (numFoundModules < 8)
+  // {
+  //   delay(200);
+  // }
+  // else
+  // {
+  //   delay(50);
+  // }
+  
     delay(200);
-  }
-  else
-  {
-    delay(50);
-  }
-  /*
-    delay(200);
-  */
+  
   for (int x = 1; x <= MAX_MODULE_ADDR; x++)
   {
     if (modules[x].isExisting())
