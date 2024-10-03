@@ -397,6 +397,9 @@ void setup()
     }
   */
 
+  bms.wakeBoards(); //wake boards
+  delay(200);
+  
   bms.renumberBoardIDs();
 
   Logger::setLoglevel(Logger::Off); //Debug = 0, Info = 1, Warn = 2, Error = 3, Off = 4
@@ -1006,7 +1009,7 @@ void loop()
     alarmupdate();
     if (CSVdebug != 1)
     {
-      dashupdate();
+      // dashupdate();
     }
     resetwdog();
   }
@@ -3264,14 +3267,14 @@ void canread()
             getcurrent();
           }
           break;
-        case 0x3C3: // Jaguar Ipace ISA shunt current reading
-          CANmilliamps = inMsg.buf[5] + (inMsg.buf[4] << 8) + (inMsg.buf[3] << 16) + (inMsg.buf[2] << 24);
-          if ( settings.cursens == Canbus)
-          {
-            RawCur = CANmilliamps;
-            getcurrent();
-          }
-          break;
+        // case 0x3C3: // Jaguar Ipace ISA shunt current reading
+        //   CANmilliamps = inMsg.buf[5] + (inMsg.buf[4] << 8) + (inMsg.buf[3] << 16) + (inMsg.buf[2] << 24);
+        //   if ( settings.cursens == Canbus)
+        //   {
+        //     RawCur = CANmilliamps;
+        //     getcurrent();
+        //   }
+        //   break;
 
         case 0x522: //
           voltage1 = (long)((inMsg.buf[2] << 24) | (inMsg.buf[3] << 16) | (inMsg.buf[4] << 8) | (inMsg.buf[5]));
